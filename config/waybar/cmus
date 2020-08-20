@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+INFO=$(cmus-remote -Q 2>/dev/null)
+STATUS=$(echo ${INFO} | sed -n -e 's/status.//p') 
+if [[ ${STATUS} = 'playing' ]]; then
+	OUTPUT=$(echo "${INFO}" | sed -n -e 's/^.*\///p' | sed -n -e 's/\.[^.]*$//p')
+elif [[ ${STATUS} = 'paused' ]]; then
+	OUTPUT="Paused"
+else
+	OUTPUT="Not in use"
+
+fi
+
+echo "${OUTPUT}"
+exit

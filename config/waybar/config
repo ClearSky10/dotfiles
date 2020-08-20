@@ -1,0 +1,69 @@
+{
+    "layer": "bottom", // Waybar at top layer
+	"height": 20, // Waybar height (to be removed for auto height)
+	"modules-left": ["sway/mode"],
+	"modules-right": ["custom/cmus", "custom/layout", "pulseaudio", "cpu", "memory", "battery", "clock", "tray"],
+	"sway/mode": {
+	    "format": "<span style=\"italic\">{}</span>"
+	},
+	"tray": {
+	    "icon-size": 15,
+	    "spacing": 10
+	},
+	"clock": {
+		"format": "{:%a %d-%m-%Y %H:%M}",
+	    "tooltip-format": "{:%Y-%m-%d | %H:%M}",
+	    "format-alt": "{:%Y-%m-%d}"
+	},
+	"cpu": {
+	    "format": "{usage}% "
+	},
+	"memory": {
+	    "format": "{}% "
+	},
+	"battery": {
+	    "states": {
+		"good": 95,
+		"warning": 30,
+		"critical": 15
+	    },
+	    "format": "{capacity}% {icon}",
+	    "format-charging": "{capacity}% ",
+	    "format-plugged": "{capacity}% ",
+	    "format-alt": "{time} {icon}",
+	    "format-icons": ["", "", "", "", ""]
+	},
+	"pulseaudio": {
+	    // "scroll-step": 1, // %, can be a float
+	    "format": "{volume}% {icon} {format_source}",
+	    "format-bluetooth": "{volume}% {icon} {format_source}",
+	    "format-bluetooth-muted": " {icon} {format_source}",
+	    "format-muted": " {format_source}",
+	    "format-source": "{volume}% ",
+	    "format-source-muted": " ",
+	    "format-icons": {
+		"headphones": " ",
+		"handsfree": " ",
+		"headset": " ",
+		"phone": " ",
+		"portable": " ",
+		"car": " ",
+		"default": ["", "", ""]
+	    },
+	    "on-click": "pavucontrol"
+	},
+	"custom/cmus": {
+	    "format": "{}",
+	    "interval": 1,
+		"exec": "/home/nemuri/.config/waybar/cmus",
+	    "on-click": "cmus-remote -u",                        //toggle pause
+	    "escape": true
+	},
+	"custom/layout": {
+	    "interval": 1,
+	    "format": "{}",
+	    // "tooltip": false,
+		"exec": "/home/nemuri/.config/waybar/layout",
+		"escape": true
+	}
+}

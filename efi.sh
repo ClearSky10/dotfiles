@@ -1,0 +1,1 @@
+efibootmgr --create --label "base" --loader /vmlinuz-linux --unicode "root=/dev/sda2 rw initrd=/amd-ucode.img initrd=/initramfs-linux.img quiet loglevel=3 vga=current vt.global_cursor_default=0 acpi_backlight=vendor" -v

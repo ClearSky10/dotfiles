@@ -1,0 +1,131 @@
+#!/bin/zsh
+set $mod Mod4
+set $cmus "screen -q -r -D player"
+set $redshift "gammastep -l 58.01:56.25 -r -t 5500:3400"
+
+font pango:Liberation Mono 7
+smart_borders on
+default_border pixel 2
+client.focused #003F7F #007F7F #FFFFFF #FF0000 #00FFFF
+client.unfocused #3F3F3F #1F1F1F #7F7F7F #00FF00 #1F1F1F
+titlebar_padding 1
+hide_edge_borders --i3 smart
+title_align center
+
+input 1:1:AT_Translated_Set_2_keyboard xkb_layout "us,ru"
+input 1:1:AT_Translated_Set_2_keyboard xkb_options "grp:caps_toggle"
+output * bg /home/nemuri/documents/wallpapers.jpg fill
+exec mako --anchor bottom-right --default-timeout 10000
+exec $redshift
+exec screen -S player /usr/bin/cmus
+exec blueman-applet
+
+set $my_cursor Breeze_Hacked
+set $my_cursor_size 34
+
+exec swayidle -w \
+			timeout 600 'swaymsg "output * dpms off"' \
+				resume 'swaymsg "output * dpms on"' \
+			timeout 1800 'systemctl suspend' \
+				resume 'swaymsg "output * dpms on"'
+
+input "1267:91:Elan_Touchpad" {
+    dwt enabled
+    tap enabled
+    tap_button_map lrm
+    natural_scroll enabled
+    pointer_accel 1
+}
+
+seat seat0 xcursor_theme $my_cursor $my_cursor_size
+exec_always {
+    gsettings set org.gnome.desktop.interface cursor-theme $my_cursor
+    gsettings set org.gnome.desktop.interface cursor-size $my_cursor_size
+}
+
+bindsym F6 exec "swaymsg input 1267:91:Elan_Touchpad events toggle enabled disabled"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86AudioPlay exec cmus-remote -u
+bindsym XF86AudioNext exec cmus-remote -n
+bindsym XF86AudioPrev exec cmus-remote -r
+
+floating_modifier $mod
+bindsym $mod+Return exec kitty
+
+set $menu j4-dmenu-desktop --dmenu='bemenu -i --fn "pango:Liberation Mono 11"' --no-generic --term=kitty
+bindsym $mod+space exec $menu
+bindsym $mod+Shift+space exec 'bemenu-run -i --fn "pango:Liberation Mono 11"'
+
+bindsym $mod+1 exec kitty -e nvim + wiki/english.md
+bindsym $mod+2 exec kitty -e nvim wiki/field.md
+#bindsym $mod+3 exec kitty -e nvim wiki/primary_protocols.md
+bindsym $mod+4 exec kitty -e nvim wiki/plans.md
+bindsym $mod+5 exec kitty -e nvim wiki/terms.otl
+bindsym $mod+6 exec kitty -e nvim wiki/workspace.md
+bindsym $mod+7 exec kitty -e nvim wiki/links.md
+bindsym $mod+8 exec kitty -e nvim wiki/studies/Studies.md
+bindsym $mod+0 exec kitty -e nvim wiki/index.md
+
+bindsym Print exec grim - | wl-copy
+bindsym $mod+Print exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Shift+Print exec swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.focused) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"' | grim -g - - | wl-copy
+
+bindsym --to-code {
+	#$mod+a exec 
+	#$mod+s exec 
+	$mod+f exec telegram-desktop
+	$mod+e exec kitty -e ranger
+	$mod+z exec standardnotes-desktop
+	$mod+d exec kitty -e nvim wiki/tasklist.md
+	$mod+x exec keepassxc
+	$mod+c exec kitty -e nvim .config/sway/config
+	$mod+r exec firefox
+	$mod+q exec env QT_QPA_PLATFORM="xcb" zoom
+	$mod+m exec kitty -e screen -q -r -D player
+
+	$mod+h focus left
+	$mod+j focus down
+	$mod+k focus up
+	$mod+l focus right
+	$mod+w kill
+	$mod+t fullscreen toggle
+	$mod+u layout tabbed
+
+	$mod+Shift+h move left
+	$mod+Shift+j move down
+	$mod+Shift+k move up
+	$mod+Shift+l move right
+
+	$mod+Shift+z exec systemctl poweroff
+	$mod+Shift+x exec systemctl suspend
+	$mod+Shift+r exec systemctl reboot
+	$mod+Shift+y exec swaymsg exit
+	$mod+Shift+u exec $redshift
+	$mod+Shift+t floating toggle
+	$mod+Shift+n exec kitty -e nmtui
+	$mod+Shift+p exec pavucontrol
+	$mod+Shift+b exec blueman-manager
+	$mod+Shift+c reload
+	$mod+Shift+o exec xeyes
+	$mod+Shift+w mode "resize"
+}
+
+mode "resize" {
+	bindsym --to-code {
+		h resize shrink width 10 px or 10 ppt
+		j resize grow height 10 px or 10 ppt
+		k resize shrink height 10 px or 10 ppt
+		l resize grow width 10 px or 10 ppt
+		Escape mode "default"
+	}
+}
+
+bar {
+	swaybar_command waybar
+}
+
+for_window [app_id="firefox"] inhibit_idle fullscreen

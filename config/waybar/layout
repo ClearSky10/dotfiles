@@ -1,0 +1,7 @@
+#!/bin/zsh
+if [[ $(swaymsg -t get_inputs | jq '.[1].xkb_active_layout_name') = 'null' ]] ; then
+    echo $(swaymsg -t get_inputs | jq '.[0].xkb_active_layout_name')    
+else
+    echo $(swaymsg -t get_inputs | jq '.[1].xkb_active_layout_name')    
+fi
+exit 0
