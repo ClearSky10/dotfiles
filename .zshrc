@@ -40,13 +40,12 @@ alias t="trans -b :ru"
 alias p="python"
 alias r="ranger"
 alias vi="nvim"
-alias w="cd ~/work/dpi"
 alias we="source /home/nemuri/work/env/bin/activate"
 alias c="bc -l"
 alias bc="bc -l"
-alias dotdrop="/home/nemuri/documents/dotfiles/dotdrop.sh --cfg=/home/nemuri/documents/dotfiles/config.yaml"
 alias pm="go-mtpfs ~/documents/phone"
 alias pu="fusermount -u ~/documents/phone"
+alias diary="cat > /dev/null"
 
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan

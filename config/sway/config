@@ -2,6 +2,7 @@
 set $mod Mod4
 set $cmus "screen -q -r -D player"
 set $redshift "gammastep -l 58.01:56.25 -r -t 5500:3400"
+xwayland disable
 
 font pango:Liberation Mono 7
 smart_borders on
@@ -60,14 +61,13 @@ set $menu j4-dmenu-desktop --dmenu='bemenu -i --fn "pango:Liberation Mono 11"' -
 bindsym $mod+space exec $menu
 bindsym $mod+Shift+space exec 'bemenu-run -i --fn "pango:Liberation Mono 11"'
 
-bindsym $mod+1 exec kitty -e nvim + wiki/english.md
+bindsym $mod+1 exec kitty -e nvim wiki/studies/studies.md
 bindsym $mod+2 exec kitty -e nvim wiki/field.md
-#bindsym $mod+3 exec kitty -e nvim wiki/primary_protocols.md
+bindsym $mod+3 exec kitty -e nvim wiki/links.md
 bindsym $mod+4 exec kitty -e nvim wiki/plans.md
 bindsym $mod+5 exec kitty -e nvim wiki/terms.otl
 bindsym $mod+6 exec kitty -e nvim wiki/workspace.md
-bindsym $mod+7 exec kitty -e nvim wiki/links.md
-bindsym $mod+8 exec kitty -e nvim wiki/studies/Studies.md
+bindsym $mod+9 exec kitty -e nvim + wiki/english.md
 bindsym $mod+0 exec kitty -e nvim wiki/index.md
 
 bindsym Print exec grim - | wl-copy
@@ -79,12 +79,12 @@ bindsym --to-code {
 	#$mod+s exec 
 	$mod+f exec telegram-desktop
 	$mod+e exec kitty -e ranger
-	$mod+z exec standardnotes-desktop
 	$mod+d exec kitty -e nvim wiki/tasklist.md
 	$mod+x exec keepassxc
 	$mod+c exec kitty -e nvim .config/sway/config
 	$mod+r exec firefox
-	$mod+q exec env QT_QPA_PLATFORM="xcb" zoom
+	#$mod+z exec
+	$mod+q exec zoom
 	$mod+m exec kitty -e screen -q -r -D player
 
 	$mod+h focus left
@@ -110,7 +110,7 @@ bindsym --to-code {
 	$mod+Shift+p exec pavucontrol
 	$mod+Shift+b exec blueman-manager
 	$mod+Shift+c reload
-	$mod+Shift+o exec xeyes
+	#$mod+Shift+o exec xeyes
 	$mod+Shift+w mode "resize"
 }
 
@@ -127,5 +127,3 @@ mode "resize" {
 bar {
 	swaybar_command waybar
 }
-
-for_window [app_id="firefox"] inhibit_idle fullscreen

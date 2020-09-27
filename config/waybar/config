@@ -2,7 +2,8 @@
     "layer": "bottom", // Waybar at top layer
 	"height": 20, // Waybar height (to be removed for auto height)
 	"modules-left": ["sway/mode"],
-	"modules-right": ["custom/cmus", "custom/layout", "pulseaudio", "cpu", "memory", "battery", "clock", "tray"],
+	/*"modules-right": ["custom/cmus", "custom/layout", "pulseaudio", "cpu", "memory", "battery", "clock", "tray"],*/
+	"modules-right": ["custom/layout", "pulseaudio", "cpu", "memory", "battery", "clock", "tray"],
 	"sway/mode": {
 	    "format": "<span style=\"italic\">{}</span>"
 	},

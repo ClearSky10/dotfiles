@@ -15,7 +15,7 @@ let mapleader=";"
 nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 nnoremap <silent> <leader>ec :e $MYVIMRC<CR>
-nnoremap <silent> <leader>ss :source $MYVIMRC<CR>
+nnoremap <silent> <leader>ss :so $MYVIMRC<CR>
 nnoremap <silent> <Space> :NERDTreeToggle<CR>
 nnoremap <silent> <leader>se :setlocal spell spelllang=en_us<CR>
 nnoremap <silent> <leader>sr :setlocal spell spelllang=ru<CR>
@@ -25,6 +25,7 @@ nnoremap <silent> <leader>h :tabp<CR>
 nnoremap <silent> <leader>l :tabn<CR>
 nnoremap <leader>p :call CocAction('format')<CR>
 nnoremap <C-S> :w<CR>
+nnoremap <leader>u :so %<CR>
 inoremap <C-S> <C-O>:w<CR>
 nmap <C-_> <Plug>NERDCommenterToggle
 nmap <leader>n <Plug>(coc-diagnostic-next)
@@ -45,6 +46,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim'
+Plug 'junk-e/identity.vim'
 "Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'numirias/semshi'
@@ -54,7 +56,9 @@ Plug 'vimoutliner/vimoutliner'
 Plug 'elzr/vim-json'
 call plug#end()
 colo nemuri
+"colo identity
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:coc_global_extensions = ['coc-python', 'coc-css', 'coc-prettier', 'coc-json']
-let g:airline_theme='serene'
+"let g:airline_theme='serene'
+let g:airline_theme='behelit'
 source ~/.config/nvim/wiki.vim
