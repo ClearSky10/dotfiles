@@ -40,7 +40,7 @@ alias t="trans -b :ru"
 alias p="python"
 alias r="ranger"
 alias vi="nvim"
-alias we="source /home/nemuri/work/env/bin/activate"
+alias we="source /home/kei/work/env/bin/activate"
 alias c="bc -l"
 alias bc="bc -l"
 alias pm="go-mtpfs ~/documents/phone"
@@ -75,5 +75,6 @@ export MOZ_ENABLE_WAYLAND=1
 source ~/.p10k.zsh
 
 if [ "$(tty)" = "/dev/tty1" ]; then
+	export $(dbus-launch)
 	exec sway
 fi
