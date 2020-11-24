@@ -46,7 +46,6 @@ window#waybar {
   color: #00CCCC;
 }
 
-
 #battery.charging {
   /*color: #26a65b;*/
   color: #8fffff;
@@ -83,7 +82,7 @@ label:focus {
   color: #4FFFB0;
 }
 
-#custom-layout {
+#language {
   color: #20B2AA;
 }
 

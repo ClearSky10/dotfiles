@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/zsh
 
 INFO=$(cmus-remote -Q 2>/dev/null)
 STATUS=$(echo ${INFO} | sed -n -e 's/status.//p') 

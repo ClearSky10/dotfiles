@@ -2,7 +2,7 @@
 set $mod Mod4
 set $cmus "screen -q -r -D player"
 set $redshift "gammastep -l 58.01:56.25 -r -t 5500:3400"
-xwayland disable
+#xwayland disable
 
 font pango:Liberation Mono 7
 smart_borders on
@@ -19,7 +19,7 @@ output * bg /home/kei/documents/wallpapers.jpg fill
 exec mako --anchor bottom-right --default-timeout 10000
 exec $redshift
 exec screen -S player /usr/bin/cmus
-exec blueman-applet
+#exec blueman-applet
 
 set $my_cursor Breeze
 set $my_cursor_size 16 
@@ -62,11 +62,12 @@ bindsym $mod+space exec $menu
 bindsym $mod+Shift+space exec 'bemenu-run -i --fn "pango:Liberation Mono 11"'
 
 bindsym $mod+1 exec kitty -e nvim wiki/studies/studies.md
-bindsym $mod+2 exec kitty -e nvim wiki/protocols.md
+bindsym $mod+2 exec kitty -e nvim wiki/field.md
 bindsym $mod+3 exec kitty -e nvim wiki/links.md
 bindsym $mod+4 exec kitty -e nvim wiki/plans.md
 bindsym $mod+5 exec kitty -e nvim wiki/terms.otl
 bindsym $mod+6 exec kitty -e nvim wiki/workspace.md
+bindsym $mod+7 exec kitty -e nvim wiki/protocols.md
 bindsym $mod+9 exec kitty -e nvim + wiki/english.md
 bindsym $mod+0 exec kitty -e nvim wiki/index.md
 
@@ -99,13 +100,13 @@ bindsym --to-code {
 	$mod+Shift+k move up
 	$mod+Shift+l move right
 
-	$mod+Shift+z exec sudo poweroff
-	$mod+Shift+x exec sudo suspend
-	$mod+Shift+r exec sudo reboot
+	$mod+Shift+z exec systemctl poweroff
+	$mod+Shift+x exec systemctl suspend
+	$mod+Shift+r exec systemctl reboot
 	$mod+Shift+y exec swaymsg exit
 	$mod+Shift+u exec $redshift
 	$mod+Shift+t floating toggle
-	$mod+Shift+n exec connman-gtk
+	$mod+Shift+n exec kitty -e nmtui
 	$mod+Shift+p exec pavucontrol
 	$mod+Shift+b exec blueman-manager
 	$mod+Shift+c reload

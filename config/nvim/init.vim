@@ -56,9 +56,19 @@ Plug 'vimoutliner/vimoutliner'
 Plug 'elzr/vim-json'
 call plug#end()
 colo nemuri
-"colo identity
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:coc_global_extensions = ['coc-python', 'coc-css', 'coc-prettier', 'coc-json']
-"let g:airline_theme='serene'
 let g:airline_theme='behelit'
-source ~/.config/nvim/wiki.vim
+
+" wiki settings
+set concealcursor=n
+let g:vimwiki_folding='expr:quick'
+let g:vimwiki_hl_headers=1
+let wiki1 = {'syntax': 'markdown', 'ext': '.md', 'links_space_char': '_'}
+let wiki1.path = '~/wiki'
+let wiki1.name = 'wiki'
+let g:vimwiki_list = [wiki1]
+let g:vimwiki_url_maxsave = 0
+set foldlevel=2
+au BufRead *.otl            set foldlevel=0
+au BufRead *.otl            set foldcolumn=0

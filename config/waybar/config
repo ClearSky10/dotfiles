@@ -2,8 +2,7 @@
     "layer": "bottom", // Waybar at top layer
 	"height": 20, // Waybar height (to be removed for auto height)
 	"modules-left": ["sway/mode"],
-	/*"modules-right": ["custom/cmus", "custom/layout", "pulseaudio", "cpu", "memory", "battery", "clock", "tray"],*/
-	"modules-right": ["custom/layout", "pulseaudio", "cpu", "memory", "battery", "clock", "tray"],
+	"modules-right": ["sway/language", "pulseaudio", "cpu", "memory", "battery", "clock", "tray"],
 	"sway/mode": {
 	    "format": "<span style=\"italic\">{}</span>"
 	},
@@ -57,14 +56,7 @@
 	    "format": "{}",
 	    "interval": 1,
 		"exec": "/home/kei/.config/waybar/cmus",
-	    "on-click": "cmus-remote -u",                        //toggle pause
+	    "on-click": "cmus-remote -u",
 	    "escape": true
 	},
-	"custom/layout": {
-	    "interval": 1,
-	    "format": "{}",
-	    // "tooltip": false,
-		"exec": "/home/kei/.config/waybar/layout",
-		"escape": true
-	}
 }
