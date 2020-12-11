@@ -2,7 +2,7 @@
 set $mod Mod4
 set $cmus "screen -q -r -D player"
 set $redshift "gammastep -l 58.01:56.25 -r -t 5500:3400"
-#xwayland disable
+xwayland disable
 
 font pango:Liberation Mono 7
 smart_borders on
@@ -15,7 +15,7 @@ title_align center
 
 input 1:1:AT_Translated_Set_2_keyboard xkb_layout "us,ru"
 input 1:1:AT_Translated_Set_2_keyboard xkb_options "grp:caps_toggle"
-output * bg /home/kei/documents/wallpapers.jpg fill
+output "*" bg /home/kei/documents/wallpapers.jpg fill
 exec mako --anchor bottom-right --default-timeout 10000
 exec $redshift
 exec screen -S player /usr/bin/cmus
@@ -26,9 +26,9 @@ set $my_cursor_size 16
 
 exec swayidle -w \
 			timeout 600 'swaymsg "output * dpms off"' \
-				resume 'swaymsg "output * dpms on"' # \ 
-			#timeout 1800 'systemctl suspend' \
-				#resume 'swaymsg "output * dpms on"'
+				resume 'swaymsg "output * dpms on"' \
+			timeout 1800 'systemctl suspend' \
+				resume 'swaymsg "output * dpms on"'
 
 input "1267:91:Elan_Touchpad" {
     dwt enabled
@@ -62,12 +62,11 @@ bindsym $mod+space exec $menu
 bindsym $mod+Shift+space exec 'bemenu-run -i --fn "pango:Liberation Mono 11"'
 
 bindsym $mod+1 exec kitty -e nvim wiki/studies/studies.md
-bindsym $mod+2 exec kitty -e nvim wiki/field.md
+bindsym $mod+2 exec kitty -e nvim wiki/meta.md
 bindsym $mod+3 exec kitty -e nvim wiki/links.md
-bindsym $mod+4 exec kitty -e nvim wiki/plans.md
+bindsym $mod+4 exec kitty -e nvim wiki/meta.md # this should be restructured
 bindsym $mod+5 exec kitty -e nvim wiki/terms.otl
 bindsym $mod+6 exec kitty -e nvim wiki/workspace.md
-bindsym $mod+7 exec kitty -e nvim wiki/protocols.md
 bindsym $mod+9 exec kitty -e nvim + wiki/english.md
 bindsym $mod+0 exec kitty -e nvim wiki/index.md
 

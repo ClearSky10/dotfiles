@@ -43,9 +43,10 @@ alias vi="nvim"
 alias we="source /home/kei/work/env/bin/activate"
 alias c="bc -l"
 alias bc="bc -l"
-alias pm="go-mtpfs ~/documents/phone"
+alias pm="aft-mtp-mount ~/documents/phone"
 alias pu="fusermount -u ~/documents/phone"
-alias diary="cat > /dev/null"
+alias diary=">/dev/null"
+alias "vd"="nvim -d"
 
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
@@ -75,6 +76,5 @@ export MOZ_ENABLE_WAYLAND=1
 source ~/.p10k.zsh
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-	export $(dbus-launch)
 	exec sway
 fi
