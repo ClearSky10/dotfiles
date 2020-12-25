@@ -19,7 +19,7 @@ output "*" bg /home/kei/documents/wallpapers.jpg fill
 exec mako --anchor bottom-right --default-timeout 10000
 exec $redshift
 exec screen -S player /usr/bin/cmus
-#exec blueman-applet
+#exec nm-applet
 
 set $my_cursor Breeze
 set $my_cursor_size 16 
@@ -62,9 +62,9 @@ bindsym $mod+space exec $menu
 bindsym $mod+Shift+space exec 'bemenu-run -i --fn "pango:Liberation Mono 11"'
 
 bindsym $mod+1 exec kitty -e nvim wiki/studies/studies.md
-bindsym $mod+2 exec kitty -e nvim wiki/meta.md
+bindsym $mod+2 exec kitty -e nvim wiki/mainline.md
 bindsym $mod+3 exec kitty -e nvim wiki/links.md
-bindsym $mod+4 exec kitty -e nvim wiki/meta.md # this should be restructured
+bindsym $mod+4 exec kitty -e nvim wiki/meta.md
 bindsym $mod+5 exec kitty -e nvim wiki/terms.otl
 bindsym $mod+6 exec kitty -e nvim wiki/workspace.md
 bindsym $mod+9 exec kitty -e nvim + wiki/english.md
@@ -99,13 +99,14 @@ bindsym --to-code {
 	$mod+Shift+k move up
 	$mod+Shift+l move right
 
-	$mod+Shift+z exec systemctl poweroff
-	$mod+Shift+x exec systemctl suspend
-	$mod+Shift+r exec systemctl reboot
+	$mod+Shift+z exec sudo poweroff
+	$mod+Shift+x exec sudo suspend
+	$mod+Shift+r exec sudo reboot
 	$mod+Shift+y exec swaymsg exit
 	$mod+Shift+u exec $redshift
 	$mod+Shift+t floating toggle
 	$mod+Shift+n exec kitty -e nmtui
+	#$mod+Shift+n exec cmst
 	$mod+Shift+p exec pavucontrol
 	$mod+Shift+b exec blueman-manager
 	$mod+Shift+c reload

@@ -1,1 +1,1 @@
-sudo pacman -S sway waybar wl-clipboard jq cmus firefox telegram-desktop
+sudo pacman -S sway waybar wl-clipboard jq cmus firefox telegram-desktop kitty
