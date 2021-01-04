@@ -1,6 +1,7 @@
 #!/bin/zsh
 set $mod Mod4
 set $cmus "screen -q -r -D player"
+set $cmus_start "screen -S player cmus"
 set $redshift "gammastep -l 58.01:56.25 -r -t 5500:3400"
 xwayland disable
 
@@ -17,9 +18,9 @@ input 1:1:AT_Translated_Set_2_keyboard xkb_layout "us,ru"
 input 1:1:AT_Translated_Set_2_keyboard xkb_options "grp:caps_toggle"
 output "*" bg /home/kei/documents/wallpapers.jpg fill
 exec mako --anchor bottom-right --default-timeout 10000
+
 exec $redshift
-exec screen -S player /usr/bin/cmus
-#exec nm-applet
+#exec $cmus_start
 
 set $my_cursor Breeze
 set $my_cursor_size 16 
@@ -44,47 +45,46 @@ exec_always {
     gsettings set org.gnome.desktop.interface cursor-size $my_cursor_size
 }
 
-bindsym F6 exec "swaymsg input 1267:91:Elan_Touchpad events toggle enabled disabled"
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
-bindsym XF86AudioPlay exec cmus-remote -u
-bindsym XF86AudioNext exec cmus-remote -n
-bindsym XF86AudioPrev exec cmus-remote -r
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 floating_modifier $mod
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec foot
 
-set $menu j4-dmenu-desktop --dmenu='bemenu -i --fn "pango:Liberation Mono 11"' --no-generic --term=kitty
+set $menu j4-dmenu-desktop --dmenu='bemenu -i --fn "pango:Liberation Mono 11"' --no-generic --term=foot
 bindsym $mod+space exec $menu
 bindsym $mod+Shift+space exec 'bemenu-run -i --fn "pango:Liberation Mono 11"'
 
-bindsym $mod+1 exec kitty -e nvim wiki/studies/studies.md
-bindsym $mod+2 exec kitty -e nvim wiki/mainline.md
-bindsym $mod+3 exec kitty -e nvim wiki/links.md
-bindsym $mod+4 exec kitty -e nvim wiki/meta.md
-bindsym $mod+5 exec kitty -e nvim wiki/terms.otl
-bindsym $mod+6 exec kitty -e nvim wiki/workspace.md
-bindsym $mod+9 exec kitty -e nvim + wiki/english.md
-bindsym $mod+0 exec kitty -e nvim wiki/index.md
+bindsym $mod+1 exec foot nvim wiki/studies/studies.md
+bindsym $mod+2 exec foot nvim wiki/mainline.md
+bindsym $mod+3 exec foot nvim wiki/links.md
+bindsym $mod+4 exec foot nvim wiki/meta.md
+bindsym $mod+5 exec foot nvim wiki/terms.otl
+bindsym $mod+6 exec foot nvim wiki/workspace.md
+bindsym $mod+9 exec foot nvim + wiki/english.md
+bindsym $mod+0 exec foot nvim wiki/index.md
 
 bindsym Print exec grim - | wl-copy
 bindsym $mod+Print exec grim -g "$(slurp)" - | wl-copy
 bindsym $mod+Shift+Print exec swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.focused) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"' | grim -g - - | wl-copy
 
 bindsym --to-code {
-	#$mod+a exec 
-	$mod+s exec firefox
+	$mod+a exec foot neomutt
+	$mod+s exec firefox-nightly
 	$mod+f exec telegram-desktop
-	$mod+e exec kitty -e ranger
-	$mod+d exec kitty -e nvim wiki/tasklist.md
+	$mod+e exec foot ranger
+	$mod+d exec foot nvim wiki/tasklist.md
 	$mod+x exec keepassxc
-	$mod+c exec kitty -e nvim .config/sway/config
-	#$mod+r exec
-	#$mod+z exec
-	$mod+m exec kitty -e screen -q -r -D player
+	$mod+c exec foot nvim .config/sway/config
+	$mod+q exec zoom
+	$mod+r exec foot nvim wiki/habits.otl
+	$mod+m exec foot screen -q -r -D player
 
 	$mod+h focus left
 	$mod+j focus down
@@ -99,16 +99,14 @@ bindsym --to-code {
 	$mod+Shift+k move up
 	$mod+Shift+l move right
 
-	$mod+Shift+z exec sudo poweroff
-	$mod+Shift+x exec sudo suspend
-	$mod+Shift+r exec sudo reboot
+	$mod+Shift+z exec systemctl poweroff
+	$mod+Shift+x exec systemctl suspend
+	$mod+Shift+r exec systemctl reboot
 	$mod+Shift+y exec swaymsg exit
 	$mod+Shift+u exec $redshift
+	$mod+Shift+m exec $cmus_start
 	$mod+Shift+t floating toggle
-	$mod+Shift+n exec kitty -e nmtui
-	#$mod+Shift+n exec cmst
 	$mod+Shift+p exec pavucontrol
-	$mod+Shift+b exec blueman-manager
 	$mod+Shift+c reload
 	$mod+Shift+w mode "resize"
 }

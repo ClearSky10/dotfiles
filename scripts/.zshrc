@@ -1,28 +1,13 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  #source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-
 #!/bin/zsh
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-
-#autoload predict-on
-#predict-on
 
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 compinit
 _comp_options+=(globdots)
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -36,17 +21,16 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 alias ls="ls --color"
-alias t="trans -b :ru"
 alias p="python"
 alias r="ranger"
 alias vi="nvim"
 alias we="source /home/kei/work/env/bin/activate"
 alias c="bc -l"
-alias bc="bc -l"
 alias pm="aft-mtp-mount ~/documents/phone"
 alias pu="fusermount -u ~/documents/phone"
 alias diary=">/dev/null"
 alias "vd"="nvim -d"
+alias t="tmux"
 
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
@@ -63,16 +47,10 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 export LESS="--RAW-CONTROL-CHARS"
 
-export VISUAL=nvim
+export VISUAL=foot nvim
 export EDITOR=nvim
-export QT_QPA_PLATFORM=wayland
-export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export ECORE_EVAS_ENGINE=wayland_egl
-export ELM_ENGINE=wayland_egl
-export SDL_VIDEODRIVER=wayland
 export MOZ_ENABLE_WAYLAND=1
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.p10k.zsh
 
 if [ "$(tty)" = "/dev/tty1" ]; then

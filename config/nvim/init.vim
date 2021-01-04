@@ -57,7 +57,7 @@ Plug 'elzr/vim-json'
 call plug#end()
 colo nemuri
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:coc_global_extensions = ['coc-python', 'coc-css', 'coc-prettier', 'coc-json']
+let g:coc_global_extensions = ['coc-pyright', 'coc-css', 'coc-prettier', 'coc-json', 'coc-highlight']
 let g:airline_theme='behelit'
 
 " wiki settings
