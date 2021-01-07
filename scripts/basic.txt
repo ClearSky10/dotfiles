@@ -1,0 +1,12 @@
+git
+ranger
+zsh zsh-theme-powerlevel10k
+zsh-syntax-highlighting
+zsh-history-substring-search
+zsh-autosuggestions
+neovim
+python-pynvim
+yarn
+base-devel
+iwd
+dhcpcd
