@@ -67,6 +67,7 @@ bindsym $mod+3 exec foot nvim wiki/links.md
 bindsym $mod+4 exec foot nvim wiki/meta.md
 bindsym $mod+5 exec foot nvim wiki/terms.otl
 bindsym $mod+6 exec foot nvim wiki/workspace.md
+bindsym $mod+7 exec foot nvim wiki/common.md
 bindsym $mod+9 exec foot nvim + wiki/english.md
 bindsym $mod+0 exec foot nvim wiki/index.md
 
@@ -82,8 +83,6 @@ bindsym --to-code {
 	$mod+d exec foot nvim wiki/tasklist.md
 	$mod+x exec keepassxc
 	$mod+c exec foot nvim .config/sway/config
-	$mod+q exec zoom
-	$mod+r exec foot nvim wiki/habits.otl
 	$mod+m exec foot screen -q -r -D player
 
 	$mod+h focus left
@@ -99,6 +98,7 @@ bindsym --to-code {
 	$mod+Shift+k move up
 	$mod+Shift+l move right
 
+	$mod+Shift+d exec foot nvim /dev/null
 	$mod+Shift+z exec systemctl poweroff
 	$mod+Shift+x exec systemctl suspend
 	$mod+Shift+r exec systemctl reboot
@@ -107,6 +107,7 @@ bindsym --to-code {
 	$mod+Shift+m exec $cmus_start
 	$mod+Shift+t floating toggle
 	$mod+Shift+p exec pavucontrol
+	$mod+Shift+b exec blueman-manager
 	$mod+Shift+c reload
 	$mod+Shift+w mode "resize"
 }

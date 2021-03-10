@@ -7,7 +7,7 @@ zsh-history-substring-search
 zsh-autosuggestions
 neovim
 python-pynvim
-yarn
+npm
 base-devel
 iwd
 dhcpcd

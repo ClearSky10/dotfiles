@@ -1,14 +1,10 @@
 * {
-  border: none;
-  border-radius: 0;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: "FreeSans";
   font-size: 13px;
-  min-height: 0;
 }
 
 #mode, #clock, #battery, #memory, #custom-cmus, #custom-layout, #pulseaudio, #cpu {
     padding: 0 20px;
-	/*border-right: 1px solid #120A8F;*/
 }
 
 #tray {
@@ -38,7 +34,6 @@ window#waybar {
 #idle_inhibitor,
 
 #clock {
-  /*color: #00AB66;*/
   color: #99FFFF;
 }
 
@@ -47,7 +42,6 @@ window#waybar {
 }
 
 #battery.charging {
-  /*color: #26a65b;*/
   color: #8fffff;
 }
 

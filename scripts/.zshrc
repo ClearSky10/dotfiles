@@ -24,11 +24,9 @@ alias ls="ls --color"
 alias p="python"
 alias r="ranger"
 alias vi="nvim"
-alias we="source /home/kei/work/env/bin/activate"
 alias c="bc -l"
 alias pm="aft-mtp-mount ~/documents/phone"
 alias pu="fusermount -u ~/documents/phone"
-alias diary=">/dev/null"
 alias "vd"="nvim -d"
 alias t="tmux"
 
@@ -47,11 +45,15 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 export LESS="--RAW-CONTROL-CHARS"
 
-export VISUAL=foot nvim
+export VISUAL=nvim
 export EDITOR=nvim
 export MOZ_ENABLE_WAYLAND=1
 
 source ~/.p10k.zsh
+
+export PATH=/home/kei/.cargo/bin:$PATH
+export PATH=/home/kei/.local/bin:$PATH
+source  ~/.extra
 
 if [ "$(tty)" = "/dev/tty1" ]; then
 	exec sway

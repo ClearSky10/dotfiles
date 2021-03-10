@@ -4,6 +4,7 @@ cp -r config/ranger ~/.config/ranger
 cp -r config/waybar ~/.config/waybar
 cp -r config/cmus ~/.config/cmus
 cp -r config/foot ~/.config/foot
+cp -r config/zathura ~/.config/zathura
 cp -r config/neomutt ~/.config/neomutt
 cp -r scripts/.zshrc ~/.zshrc
 cp -r scripts/.p10k.zsh ~/.p10k.zsh
