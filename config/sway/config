@@ -61,14 +61,15 @@ set $menu j4-dmenu-desktop --dmenu='bemenu -i --fn "pango:Liberation Mono 11"' -
 bindsym $mod+space exec $menu
 bindsym $mod+Shift+space exec 'bemenu-run -i --fn "pango:Liberation Mono 11"'
 
-bindsym $mod+1 exec foot nvim wiki/studies/studies.md
+bindsym $mod+1 exec foot nvim wiki/diary/$(date +"%U").md 
 bindsym $mod+2 exec foot nvim wiki/mainline.md
 bindsym $mod+3 exec foot nvim wiki/links.md
 bindsym $mod+4 exec foot nvim wiki/meta.md
 bindsym $mod+5 exec foot nvim wiki/terms.otl
-bindsym $mod+6 exec foot nvim wiki/workspace.md
-bindsym $mod+7 exec foot nvim wiki/common.md
-bindsym $mod+9 exec foot nvim + wiki/english.md
+#bindsym $mod+6 exec foot nvim wiki/
+#bindsym $mod+7 exec foot nvim wiki/
+bindsym $mod+8 exec foot nvim + wiki/english.md
+bindsym $mod+9 exec foot nvim wiki/studies/studies.md
 bindsym $mod+0 exec foot nvim wiki/index.md
 
 bindsym Print exec grim - | wl-copy
@@ -78,6 +79,7 @@ bindsym $mod+Shift+Print exec swaymsg -t get_tree | jq -r '.. | (.nodes? // empt
 bindsym --to-code {
 	$mod+a exec foot neomutt
 	$mod+s exec firefox-nightly
+	$mod+q exec element-desktop
 	$mod+f exec telegram-desktop
 	$mod+e exec foot ranger
 	$mod+d exec foot nvim wiki/tasklist.md
@@ -98,7 +100,7 @@ bindsym --to-code {
 	$mod+Shift+k move up
 	$mod+Shift+l move right
 
-	$mod+Shift+d exec foot nvim /dev/null
+	$mod+Shift+d exec foot nvim
 	$mod+Shift+z exec systemctl poweroff
 	$mod+Shift+x exec systemctl suspend
 	$mod+Shift+r exec systemctl reboot
@@ -121,7 +123,7 @@ mode "resize" {
 		Escape mode "default"
 	}
 }
-
+  
 bar {
 	swaybar_command waybar
 }

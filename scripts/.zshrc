@@ -22,6 +22,8 @@ bindkey '^[[B' history-substring-search-down
 
 alias ls="ls --color"
 alias p="python"
+alias j="julia"
+alias g="guile"
 alias r="ranger"
 alias vi="nvim"
 alias c="bc -l"
@@ -29,6 +31,7 @@ alias pm="aft-mtp-mount ~/documents/phone"
 alias pu="fusermount -u ~/documents/phone"
 alias "vd"="nvim -d"
 alias t="tmux"
+alias d=">/dev/null"
 
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
@@ -51,8 +54,6 @@ export MOZ_ENABLE_WAYLAND=1
 
 source ~/.p10k.zsh
 
-export PATH=/home/kei/.cargo/bin:$PATH
-export PATH=/home/kei/.local/bin:$PATH
 source  ~/.extra
 
 if [ "$(tty)" = "/dev/tty1" ]; then

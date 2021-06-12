@@ -1,5 +1,4 @@
 foot
 j4-dmenu-desktop
 xcursor-breeze
-rtl8821ce-dkms-git
 mutt-wizard-git

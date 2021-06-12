@@ -1,7 +1,7 @@
 set clipboard=unnamedplus
 set number
 set termguicolors
-set acd 
+set acd
 set title
 set ignorecase
 set smartcase
@@ -47,17 +47,19 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim'
 Plug 'junk-e/identity.vim'
+Plug 'Olical/conjure'
 "Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'numirias/semshi'
-Plug 'ChaosRV/vim-nemuri-color'
+Plug 'ClearSky10/vim-nemuri-color'
 Plug 'tpope/vim-surround'
-Plug 'vimoutliner/vimoutliner' 
+Plug 'vimoutliner/vimoutliner'
 Plug 'elzr/vim-json'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 colo nemuri
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:coc_global_extensions = ['coc-pyright', 'coc-css', 'coc-prettier', 'coc-json']
+let g:coc_global_extensions = ['coc-pyright', 'coc-css', 'coc-prettier', 'coc-json', 'coc-julia']
 let g:airline_theme='behelit'
 
 " wiki settings
